@@ -27,7 +27,7 @@
     "@nestjs/platform-express": "^9.3.9",
     "@nestjs/swagger": "^6.2.1",
     "class-transformer": "^0.5.1",
-    "class-validator": "^0.13.2",
+    "class-validator": "^0.14.0",
     "dotenv": "^16.0.3",
     "joi": "^17.8.3",
     "ramda": "^0.28.0",
