@@ -20,7 +20,6 @@ services:
       lb:
         aliases:
           - backend.${DOMAIN}
-      intra:
     volumes:
       - "./backend/package.json:/home/node/package.json"
       - "./backend/src:/home/node/src"
