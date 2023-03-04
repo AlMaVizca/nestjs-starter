@@ -3,7 +3,7 @@ name: ${COMPOSE_PROJECT_NAME}
 services:
   backend:
     build:
-      context: ./
+      context: ./backend
       target: all-deps
     container_name: backend
     env_file:
@@ -22,8 +22,8 @@ services:
           - backend.${DOMAIN}
       intra:
     volumes:
-      - "./package.json:/home/node/package.json"
-      - "./src:/home/node/src"
+      - "./backend/package.json:/home/node/package.json"
+      - "./backend/src:/home/node/src"
 
 networks:
   lb:
