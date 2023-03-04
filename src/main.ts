@@ -27,10 +27,11 @@ async function bootstrap() {
 }
 
 function loadSwaggerUI(app: INestApplication, title: string) {
+  const version = process.env.npm_package_version;
   const config = new DocumentBuilder()
     .setTitle(title)
     .setDescription(`Routes for ${title} API`)
-    .setVersion('1.0')
+    .setVersion(version)
     .addTag('service')
     .addApiKey(
       { type: 'apiKey', in: 'header', name: 'authorization' },
