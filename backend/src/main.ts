@@ -19,7 +19,7 @@ async function bootstrap() {
   const configService = app.get(ConfigService);
 
   if (configService.get(Config.LOAD_SWAGGER_UI)) {
-    loadSwaggerUI(app, configService.get(Config.TITLE));
+    loadSwaggerUI(app, process.env.npm_package_name);
   }
 
   const server = await app.listen(process.env.PORT || 3000);
