@@ -1,0 +1,30 @@
+version: "3"
+name: ${COMPOSE_PROJECT_NAME}
+services:
+  backend:
+    build:
+      context: ./
+      target: all-deps
+    container_name: backend
+    env_file:
+      - .env
+    command: npm run start:dev
+    labels:
+      traefik.enable: "true"
+      traefik.http.routers.nestjs-service.rule: "Host(`backend.${DOMAIN}`)"
+      traefik.http.services.nestjs-service.loadbalancer.server.port: "3000"
+      traefik.webservice.nestjs-service.entryPoints: http,ws
+      traefik.http.routers.nestjs-service.tls: "false"
+      traefik.docker.network: lb
+    networks:
+      lb:
+        aliases:
+          - backend.${DOMAIN}
+      intra:
+    volumes:
+      - "./package.json:/home/node/package.json"
+      - "./src:/home/node/src"
+
+networks:
+  lb:
+    name: lb
