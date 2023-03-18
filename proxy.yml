@@ -1,0 +1,32 @@
+version: '3'
+services:
+  lb:
+    image: traefik
+    hostname: lb
+    ports:
+      - "80:80"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - lb
+    command:
+      - "--accesslog=true"
+      - "--log=true"
+      - "--log.level=DEBUG"
+      - "--api=true"
+      - "--api.insecure=true"
+      - "--api.debug=true"
+      - "--api.dashboard=true"
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--entrypoints.web.address=:80"
+      - "--entrypoints.ws"
+    labels:
+      traefik.enable: "true"
+      traefik.docker.network: lb
+      traefik.http.routers.traefik.rule: "Host(`lb.${DOMAIN}`)"
+      traefik.http.services.traefik.loadbalancer.server.port: "8080"
+
+networks:
+  lb:
+    external: true

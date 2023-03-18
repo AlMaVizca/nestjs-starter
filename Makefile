@@ -26,3 +26,10 @@ migration-gen: #s=service n=<name> (migration name)
 
 migration: #s=service a=<action> (action=up|down)
 	@${DC} exec $(s) npm run migration:$(a)
+
+test: # Run tests
+	@cd backend; npm run test
+
+lb: ## Start proxy
+	-@docker network create lb
+	@$(DC) --file proxy.yml up -d
