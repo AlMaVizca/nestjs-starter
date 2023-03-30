@@ -1,0 +1,33 @@
+* Nestjs starter
+
+This project is a code base to easily start new backend projects with:
+- Basic configurations service
+- OpenApi specifications (Swagger)
+- Interface to handle the project (Makefile)
+- A load balancer to use local domains and work on different projects
+
+**   How to use it?
+Clone the repository:
+*** start
+ #+begin_src sh
+   make start
+ #+end_src
+*** stop
+ #+begin_src sh
+   make stop
+ #+end_src
+
+*** test
+ #+begin_src sh
+   make test
+ #+end_src
+
+*** logs
+follow logs
+ #+begin_src sh
+   make logs
+ #+end_src
+
+*** Extra notes
+Take a look at the [[./Makefile][Makefile]], on some commands it is possible to specify the
+service to perform an action
