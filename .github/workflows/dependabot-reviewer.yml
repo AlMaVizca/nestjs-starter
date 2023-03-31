@@ -12,5 +12,5 @@ jobs:
       - name: Enable automerge on dependabot PRs
         uses: ahmadnassri/action-dependabot-auto-merge@v2
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.DEPENDABOT_AUTOMERGE_TOKEN }}
           config: .github/auto-merge.yml
