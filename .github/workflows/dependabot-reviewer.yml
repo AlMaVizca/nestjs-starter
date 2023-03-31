@@ -7,9 +7,11 @@ jobs:
     name: Enable automerge on dependabot PRs
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - name: Enable automerge on dependabot PRs
-        uses: daneden/enable-automerge-action@v1
+        uses: ahmadnassri/action-dependabot-auto-merge@v2
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           allowed-author: "dependabot[bot]"
           merge-method: SQUASH
+          config: .github/auto-merge.yml
