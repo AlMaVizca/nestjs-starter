@@ -2,7 +2,6 @@ version: 2
 updates:
   - package-ecosystem: "npm" # See documentation for possible values
     open-pull-requests-limit: 10
-    automerge: true
     directory: "/backend" # Location of package manifests
     schedule:
       interval: "weekly"
