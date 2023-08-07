@@ -14,6 +14,7 @@ build: ## Build s=<name> service
 
 start: ## Start all or s=<name> service in background
 	@$(DC) up -d $(s)
+	@echo "Access through http://$(SERVICE_NAME).$(DOMAIN)"
 
 logs: ## Show logs for all or c=<name> service
 	@$(DC) logs --tail=100 --follow $(s)

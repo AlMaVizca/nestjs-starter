@@ -11,7 +11,7 @@ services:
     command: npm run start:dev
     labels:
       traefik.enable: "true"
-      traefik.http.routers.nestjs-service.rule: "Host(`backend.${DOMAIN}`)"
+      traefik.http.routers.nestjs-service.rule: "Host(`${SERVICE_NAME}.${DOMAIN}`)"
       traefik.http.services.nestjs-service.loadbalancer.server.port: "3000"
       traefik.webservice.nestjs-service.entryPoints: http,ws
       traefik.http.routers.nestjs-service.tls: "false"
@@ -19,7 +19,7 @@ services:
     networks:
       lb:
         aliases:
-          - backend.${DOMAIN}
+          - ${SERVICE_NAME}.${DOMAIN}
     volumes:
       - "./backend/package.json:/home/node/package.json"
       - "./backend/src:/home/node/src"
@@ -27,3 +27,4 @@ services:
 networks:
   lb:
     name: lb
+    external: true
