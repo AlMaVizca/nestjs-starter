@@ -8,6 +8,10 @@ This project is a code base to easily start new backend projects with:
 
 **   How to use it?
 Clone the repository:
+
+*Note*: As you will see, by default, the service will be deployed under the domain
+backend.docker. This is because I'm using a [[https://github.com/AlMaVizca/dev-proxy][dev proxy]] to avoid port memorization.
+
 *** start
  #+begin_src sh
    make start
