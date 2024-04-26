@@ -1,6 +1,5 @@
-FROM node:18-alpine as all-deps
-
-RUN npm install -g npm@9
+FROM node:20-alpine as base
+FROM base as all-deps
 
 EXPOSE 3000
 USER node
@@ -15,7 +14,7 @@ COPY --chown=node . /home/node/
 
 RUN npm run build
 
-FROM node:18-alpine
+FROM base
 
 RUN npm install -g npm@9
 
